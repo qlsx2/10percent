@@ -2,15 +2,22 @@ $(function () {
 
     $('#content').fullpage({
         anchors: ['intro', 'pf01', 'pf02', 'pf03'],
+        responsiveWidth: 768,
         afterLoad: function (name, idx) {
             if (idx > 1) {
                 $('.header').addClass('on')
+                $('.to_top').addClass('on')
             } else {
                 $('.header').removeClass('on')
+                $('.to_top').removeClass('on')
+            }
+            if (idx > 4) {
+                $('.header').addClass('active')
+            } else {
+                $('.header').removeClass('active')
             }
         }
     });
-
 
 });
 
@@ -30,22 +37,7 @@ $(function () {
         touchRatio: 0.5,
     });
 
-
-    $(window).on('scroll', function () {
-        let sct = $(window).scrollTop();
-
-        if (sct > 0) {
-            $('.header').addClass('on')
-        } else {
-            $('.header').removeClass('on')
-        }
-    })
-
-
-
-
 })
-
 
 $(function () {
     $('.mopen').on('click', function () {
@@ -53,7 +45,6 @@ $(function () {
         $(this).toggleClass('on');
     });
 })
-
 
 
 $(function () {
